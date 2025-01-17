@@ -1,6 +1,11 @@
 <h1>SearchConditions#index</h1>
 
 <!-- show results of gourmet search api -->
+<h2>現在地の取得</h2>
+<div data-controller="geolocation">
+  <button data-action="geolocation#search">search near me</button>
+</div>
+
 <ul class="users">
   <% @shops.each do |shop| %>
     <li>
@@ -8,3 +13,8 @@
     </li>
   <% end %>
 </ul>
+
+<p>
+  <%= @longitude %>
+  <%= @latitude %>
+</p>

@@ -28,5 +28,16 @@ class SearchConditionsController < ApplicationController
     shops = REXML::XPath.match(doc, "/results/shop").map do |shop|
       @shops.push(shop.elements["name"].text)
     end
+    
+    coordinates = []
+    if params[:coordinates].present?
+      coordinates = params[:coordinates].split(",")
+      coordinates = coordinates.map(&:to_f)
+
+      p coordinates
+
+      @latitude = coordinates[0]
+      @longitude = coordinates[1]
+    end
   end
 end
