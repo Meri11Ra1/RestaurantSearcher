@@ -21,7 +21,7 @@ export default class extends Controller {
   success(pos) {
     const coord = pos.coords;
     // リダイレクトとパラムの渡し方
-    location.assign(`/search_conditions/index/?place=${coord.latitude},${coord.longitude}`)
+    location.assign(`/search_conditions/index/?coordinates=${coord.latitude},${coord.longitude}`)
   }
 
   error(err) {
