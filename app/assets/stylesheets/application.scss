@@ -17,26 +17,10 @@
 // header 7vh
 // main-content 93vh
 
-@import "bootstrap";
+// require_tree .
+// require_self
 
-// google fonts
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
-
-
-$text-color: #303030;
-$background-color: #F4F4F4;
-$line-gray: #CDCDCD;
-$icon-color: #A1A1A1;
-
-@function responsible-text-size($size) {
-  @return clamp(1em, $size, 2em);
-}
-
-@mixin mobile {
-  @media screen and (max-width: 768px) {
-    @content;
-  }
-}
+@import "./layouts.scss";
 
 * {
   font-family: 'Noto Sans JP';
@@ -101,94 +85,5 @@ header {
   #restaurant_icon {
     color: $icon-color;
     font-size: 4.5vh;
-  }
-}
-
-.search_card {
-  display: flex;
-  flex-direction: column;
-
-  background-color: #FFF;
-  box-shadow: 0px 0px 20px 2px rgba(0, 0, 0, 0.25);
-
-  width: 80vw;
-  @include mobile {
-    width: 95vw;
-  }
-  padding: 5vh 5vw 5vh 5vw;
-
-  .header_text {
-    font-size: clamp(1.4em, 3vw, 4em);
-  }
-
-  .card_text {
-    font-size: responsible-text-size(1.8vw);
-  }
-
-  .location_status {
-    display: flex;
-    flex-direction: row;
-    margin-bottom: 5vh;
-    // dialog iconと高さを合わせるための継承削除
-    .card_text {
-      padding: unset;
-      margin: unset;
-    }
-  }
-
-  .dialog {
-    display: flex;
-    align-items: center;
-    padding-left: 1vw;
-
-    .dialog_icon {
-      width: responsible-text-size(1.7vw);
-      height: responsible-text-size(1.7vw);
-      border-width: 0.2vw;
-    }
-
-    .check_icon {
-      color: #21CC21;
-    }
-  }
-
-  .search_form {
-    .range_wrapper {
-      display: flex;
-      flex-direction: row;
-      
-      .distance_range {
-        width: 80%;
-        margin-right: 2.5%;
-      }
-
-      .distance_text {
-        width: 15%;
-        margin-left: 2.5%;
-        border: 1.5px solid $line-gray;
-        border-radius: 5px;
-
-        font-size: clamp(0.7em, 1.2vw, 1.6em);
-        color: #A1A1A1;
-      }
-    }
-
-    .search_button_wrapper {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-top: 5vh;
-
-      .search_button {
-        width: 160px;
-        height: 50px;
-        font-size: responsible-text-size(1.7vw);
-        color: #FFF;
-        background-color: #605BFF;
-        border: none;
-        border-radius: 7px;
-        cursor: pointer;
-      }
-    }
   }
 }

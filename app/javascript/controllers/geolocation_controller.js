@@ -35,7 +35,9 @@ export default class extends Controller {
   searchSuccess(pos) {
     const coord = pos.coords;
     // リダイレクトとパラムの渡し方
-    this.coordinatesTarget.textContent = "lat=" + coord.latitude + "lon=" + coord.longitude;
+    const radius = document.getElementById("radius_range").value;
+
+    location.assign(`/results/?lat=${coord.latitude}&lng=${coord.longitude}&rad=${radius}`);
   }
 
   error(err) {

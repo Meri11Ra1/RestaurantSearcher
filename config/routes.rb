@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/results', to: "results#index"
   get '/search_conditions', to: "search_conditions#index"
 
   root "search_conditions#index"
