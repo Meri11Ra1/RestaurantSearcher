@@ -9,6 +9,6 @@ import GeolocationController from "./controllers/geolocation_controller";
 //= require popper
 //= require bootstrap
 
-const application = Application.start();
-application.register("geolocation", GeolocationController);
+// const application = Application.start();
+// application.register("geolocation", GeolocationController);
 
