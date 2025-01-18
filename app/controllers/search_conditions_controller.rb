@@ -7,7 +7,7 @@ class SearchConditionsController < ApplicationController
     # uriの細分化
     uri_host = "https://webservice.recruit.co.jp/"
     uri_path = "hotpepper/gourmet/v1/"
-    uri_query = "?key=#{ENV['GOURMET_API_KEY']}&large_area=Z011&count=100"
+    uri_query = "?key=#{ENV['GOURMET_API_KEY']}&large_area=Z011&count=1"
 
     parsed_uri = URI.parse(uri_host + uri_path + uri_query)
     # Net::HTTP.newでHTTPのクライアントのオブジェクトを作成

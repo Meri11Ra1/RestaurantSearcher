@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  get 'search_conditions/index'
+  get '/search_conditions', to: "search_conditions#index"
+
   root "search_conditions#index"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
