@@ -1,3 +1,7 @@
+require 'net/http'
+require 'uri'
+require 'rexml/document'
+
 class ResultsController < ApplicationController
   def index
     # 環境変数が設定されていない場合はエラーを出す
