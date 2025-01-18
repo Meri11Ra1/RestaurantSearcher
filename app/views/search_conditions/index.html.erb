@@ -1,20 +1,45 @@
-<h1>SearchConditions#index</h1>
+<div class="search_condition_main_content">  
+  <div class="search_card">
 
-<!-- show results of gourmet search api -->
-<h2>現在地の取得</h2>
-<div data-controller="geolocation">
-  <button data-action="geolocation#search">search near me</button>
+    <div class="card_header">
+      <p class="header_text">サーチステータス</p>
+    </div>
+
+    <div class="card_body">
+      
+      <div class="location_status">
+        <p class="card_text">現在地の取得・・・</p>
+        <div class="dialog" data-controller="geolocation">
+          <div class="spinner-border dialog_icon" role="status" data-geolocation-target="slide">
+            <span class="visually-hidden">Loading...</span>
+          </div>
+          <div data-geolocation-target="slide">
+            <svg xmlns="http://www.w3.org/2000/svg" class="dialog_icon check_icon" fill="currentColor" viewBox="0 0 16 16">
+              <path d="M12.736 3.97a.733.733 0 0 1 1.047 0c.286.289.29.756.01 1.05L7.88 12.01a.733.733 0 0 1-1.065.02L3.217 8.384a.757.757 0 0 1 0-1.06.733.733 0 0 1 1.047 0l3.052 3.093 5.4-6.425z"/>
+            </svg>
+          </div>
+        </div>
+      </div>
+
+      <%= form_with url: "/results", method: :get, local: true, class: "search_form" do %>
+        <label for="radius_range" class="form-label">
+          <p class="card_text">現在地からの検索半径</p>
+        </label>
+
+        <div class="range_wrapper">
+          <input 
+            type="range" class="form-range distance_range" min="1" max="5" 
+            id="radius_range" oninput="updateDistanceValue(this.value)"
+          >
+          <input
+            type="text" id="distance_display" class="distance_text"
+            readonly value="1000m"
+          >
+        </div>
+        <div class="search_button_wrapper">
+          <button class="search_button" data-action="click->geolocation#search">検索する</button>
+        </div>
+      <% end %>
+    </div>
+  </div>
 </div>
-
-<ul class="users">
-  <% @shops.each do |shop| %>
-    <li>
-      <%= shop %>
-    </li>
-  <% end %>
-</ul>
-
-<p>
-  <%= @longitude %>
-  <%= @latitude %>
-</p>
