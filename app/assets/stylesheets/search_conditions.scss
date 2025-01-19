@@ -1,5 +1,14 @@
 @import "./layouts.scss";
 
+@function responsible-text-size($size) {
+  @return clamp(0.9em, $size, 3em);
+}
+
+@function responsible-large-text-size($size) {
+  @return clamp(1.2em, $size, 3em);
+}
+
+
 .search_card {
   display: flex;
   flex-direction: column;
@@ -14,11 +23,11 @@
   padding: 5vh 5vw 5vh 5vw;
 
   .header_text {
-    font-size: clamp(1.7em, 3vw, 4em);
+    font-size: clamp(1.3em, 3vw, 4em);
   }
 
   .card_text {
-    font-size: responsible-text-size(1.8vw);
+    font-size: responsible-text-size(1.5vw);
   }
 
   .location_status {
@@ -38,8 +47,8 @@
     padding-left: 1vw;
 
     .dialog_icon {
-      width: responsible-text-size(1.7vw);
-      height: responsible-text-size(1.7vw);
+      width: clamp(1.2em, 1.7vw, 2em);
+      height: clamp(1.2em, 1.7vw, 2em);
       border-width: 0.2vw;
     }
 
@@ -73,11 +82,11 @@
     align-items: center;
     justify-content: center;
     margin-top: 5vh;
+    font-size: responsible-text-size(1.5vw);
 
     .search_button {
       width: 160px;
       height: 50px;
-      font-size: responsible-text-size(1.5vw);
       color: #FFF;
       background-color: #605BFF;
       border: none;
