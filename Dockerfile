@@ -34,7 +34,7 @@ COPY . .
 RUN bundle exec bootsnap precompile app/ lib/
 
 # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN bundle exec rails assets:clobber && \
+RUN ./bin/rails assets:clobber && \
     SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile
 
 
