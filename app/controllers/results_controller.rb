@@ -4,6 +4,16 @@ require 'rexml/document'
 
 class ResultsController < ApplicationController
   def index
+    @restaurants = []
+    @radius = case params[:rad] 
+              when "1" then "300m"
+              when "2" then "500m" 
+              when "3" then "1.0km"
+              when "4" then "2.0km"
+              when "5" then "3.0km"
+              else "Error"
+              end
+
     # 環境変数が設定されていない場合はエラーを出す
     unless ENV['GOURMET_API_KEY'] then
       raise "GOURMET_API_KEY is not set"
@@ -29,10 +39,20 @@ class ResultsController < ApplicationController
     
     doc = REXML::Document.new(response.body)
     
-    @shops = []
+    @restaurants = Array.new()
 
-    REXML::XPath.match(doc, "/results/shop").map do |shop|
-      @shops.push(shop.elements["name"].text)
+    REXML::XPath.match(doc, "/results/shop").map do |restaurant|
+      restaurant_temp = Hash.new()
+      restaurant_temp.store(:id, restaurant.elements["id"].text)
+      restaurant_temp.store(:thumbnail_url, restaurant.elements["logo_image"].text)
+      restaurant_temp.store(:name, restaurant.elements["name"].text)
+      restaurant_temp.store(:address, restaurant.elements["address"].text)
+      restaurant_temp.store(:access, restaurant.elements["access"].text)
+
+      @restaurants << restaurant_temp
     end
+
+    p @restaurants
+    @paginatable_restaurants = Kaminari.paginate_array(@restaurants).page(params[:page]).per(10)
   end
 end

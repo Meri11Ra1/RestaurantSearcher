@@ -1,12 +1,43 @@
-<ul class="users">
-  <% @shops.each do |shop| %>
-    <li>
-      <%= shop %>
-    </li>
-  <% end %>
-</ul>
+<div class="results_main_content">
+  <div class="results_header">
+    <p class="results_header_text">検索結果 (<%= @radius %>)</p>
 
-<p>
-  <%= @longitude %>
-  <%= @latitude %>
-</p>
+  
+    <%= link_to search_conditions_path do %>
+      <div class="button">
+        <span>再検索</span>
+      </div>
+    <% end %>
+  </div>
+
+  <ul class="results_list">
+    <div class="pagination_wrapper">
+      <%= paginate @paginatable_restaurants %>
+    </div>
+
+    <% @paginatable_restaurants.each do |restaurant| %>
+      <%= link_to search_conditions_path, class: "restaurant_card_button" do %>
+        <li>        
+          <div class="restaurant_card">
+            <div class="thumbnail_wrapper">
+              <%= image_tag restaurant[:thumbnail_url], class: "thumbnail"%>
+            </div>
+            <div class="restaurant_name">
+              <p class="restaurant_name_text"><%= restaurant[:name] %></p>
+            </div>
+            <div class="restaurant_address">
+              <p class="restaurant_address_text"><%= restaurant[:address] %></p>
+            </div>
+            <div class="restaurant_access">
+              <p class="restaurant_access_text"><%= restaurant[:access] %></p>
+            </div>
+          </div>
+        </li>
+      <% end %>
+    <% end %>
+
+    <div class="pagination_wrapper">
+      <%= paginate @paginatable_restaurants %>
+    </div>
+  </ul>
+</div>
