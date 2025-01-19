@@ -42,13 +42,13 @@ RUN apt-get update -qq && \
     apt-get install nodejs -y && \
     rm -rf /var/lib/apt/lists /var/cache/apt/archives
 
-    # Precompiling assets for production without requiring secret RAILS_MASTER_KEY
-RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:clobber && \
-    SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
-
 # Copy built artifacts: gems, application
 COPY --from=build /usr/local/bundle /usr/local/bundle
 COPY --from=build /rails /rails
+
+# Precompiling assets for production without requiring secret RAILS_MASTER_KEY
+RUN SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:clobber && \
+SECRET_KEY_BASE_DUMMY=1 bundle exec rails assets:precompile
 
 # Run and own only the runtime files as a non-root user for security
 RUN useradd rails --create-home --shell /bin/bash && \
