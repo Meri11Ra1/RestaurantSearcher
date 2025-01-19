@@ -1,0 +1,34 @@
+<div class="restaurant_details_main_content">
+  <div class="restaurant_deatils_header">
+    <%= link_to :back, class: "back_button_wrapper" do %>
+      <svg xmlns="http://www.w3.org/2000/svg" fill="currentColor" class="back_arrow_icon" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5"/>
+      </svg>
+      <p class="back_button_text">検索結果に戻る</p>
+    <% end %>
+  </div>
+  <div class="restaurant_details_content">
+    <div class="restaurant_thumbnail_wrapper">
+      <%= image_tag @restaurant[:thumbnail_url], class: "restaurant_thumbnail" %>
+    </div>
+    <div class="restaurant_info_field">
+      <div class="restaurant_name_wrapper">
+        <p class="restaurant_name">
+          <%= @restaurant[:name] %>
+        </p>
+      </div>
+      <div class="restaurant_open_wrapper">
+        <p class="restaurant_open">営業時間</p>
+        <p class="restaurant_open">
+          <%= @restaurant[:open] %>
+        </p>
+      </div>
+      <div class="restaurant_address_wrapper">
+        <p class="restaurant_address">住所</p>
+        <p class="restaurant_address">
+          <%= @restaurant[:address] %>
+        </p>
+      </div>
+    </div>
+  </div>
+</div>

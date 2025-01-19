@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  get '/restaurant_details', to: "restaurant_details#index"
   get '/results', to: "results#index"
   get '/search_conditions', to: "search_conditions#index"
 
