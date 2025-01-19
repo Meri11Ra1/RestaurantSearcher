@@ -22,14 +22,17 @@
             <div class="thumbnail_wrapper">
               <%= image_tag restaurant[:thumbnail_url], class: "thumbnail"%>
             </div>
-            <div class="restaurant_name">
-              <p class="restaurant_name_text"><%= restaurant[:name] %></p>
-            </div>
-            <div class="restaurant_address">
-              <p class="restaurant_address_text"><%= restaurant[:address] %></p>
-            </div>
-            <div class="restaurant_access">
-              <p class="restaurant_access_text"><%= restaurant[:access] %></p>
+            <div class="restaurant_info">
+              <div class="restaurant_name">
+                <p class="restaurant_name_text"><%= restaurant[:name] %></p>
+              </div>
+              <div class="restaurant_address">
+                <p class="restaurant_address_text"><%= restaurant[:address] %></p>
+              </div>
+              <div class="restaurant_access">
+                <p class="restaurant_access_text mobile"><%= restaurant[:mobile_access] %></p>
+                <p class="restaurant_access_text pc"><%= restaurant[:access] %></p>
+              </div>
             </div>
           </div>
         </li>

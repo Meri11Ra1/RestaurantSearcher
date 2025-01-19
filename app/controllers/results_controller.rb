@@ -37,6 +37,7 @@ class ResultsController < ApplicationController
       restaurant_temp.store(:name, restaurant.elements["name"].text)
       restaurant_temp.store(:address, restaurant.elements["address"].text)
       restaurant_temp.store(:access, restaurant.elements["access"].text)
+      restaurant_temp.store(:mobile_access, restaurant.elements["mobile_access"].text)
 
       @restaurants << restaurant_temp
     end

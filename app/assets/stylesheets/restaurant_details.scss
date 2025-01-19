@@ -27,6 +27,9 @@
   flex-direction: row;
   align-items: center;
   margin: 3vh 0 3vh 0;
+  @include mobile {
+    margin: 0;
+  }
 
   p {
     margin: 0;
@@ -56,6 +59,9 @@
 .restaurant_details_content {
   display: flex;
   flex-direction: row;
+  @include mobile {
+    flex-direction: column;
+  }
   margin: 5vh 0 5vh 0;
 
   .restaurant_thumbnail_wrapper {
@@ -90,6 +96,37 @@
     .restaurant_address {
       font-size: responsible-text-size(1.5vw);
       font-weight: bold;
+    }
+  }
+
+  // mobile用のデザインを記述
+  // pc用のデザインに上書きする形で実装する
+  @include mobile {
+    .restaurant_info_field {
+      justify-content: start;
+      height: unset;
+    }
+    .restaurant_thumbnail_wrapper {
+      align-self: center;
+      width: clamp(40vh, 40vh, 35vw);
+      height: clamp(40vh, 40vh, 35vw);
+      margin-bottom: 3vh;
+      margin-right: 0;
+    }
+    .restaurant_name_wrapper {
+      width: 95vw
+    }
+    .restaurant_open_index {
+      margin-bottom: 0.5vh;
+    }
+    .restaurant_open {
+      width: 95vw;
+    }
+    .restaurant_address_index {
+      margin-bottom: 0.5vh;
+    }
+    .restaurant_address {
+      width: 95vw;
     }
   }
 }
