@@ -16,8 +16,8 @@
     </div>
 
     <% @paginatable_restaurants.each do |restaurant| %>
-      <%= link_to search_conditions_path, class: "restaurant_card_button" do %>
-        <li>        
+      <%= link_to "#{restaurant_details_path}/?id=#{restaurant[:id]}", class: "restaurant_card_button" do %>
+        <li>
           <div class="restaurant_card">
             <div class="thumbnail_wrapper">
               <%= image_tag restaurant[:thumbnail_url], class: "thumbnail"%>

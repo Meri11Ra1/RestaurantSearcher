@@ -1,11 +1,9 @@
-require 'net/http'
-require 'uri'
 require 'rexml/document'
 
 class ResultsController < ApplicationController
   def index
-    @restaurants = []
-    @radius = case params[:rad] 
+    @restaurants = Array.new() # レストラン情報を格納する配列
+    @radius = case params[:rad] # 半径の表示を変換
               when "1" then "300m"
               when "2" then "500m" 
               when "3" then "1.0km"
@@ -24,23 +22,14 @@ class ResultsController < ApplicationController
       redirect_to root_path
     end
 
-    # uriの細分化
-    uri_host = "https://webservice.recruit.co.jp/"
-    uri_path = "hotpepper/gourmet/v1/"
+    # uriの細分化、リクエストの送信
+    uri_path = "https://webservice.recruit.co.jp/hotpepper/gourmet/v1/"
     uri_query = "?key=#{ENV['GOURMET_API_KEY']}&lat=#{params[:lat]}&lng=#{params[:lng]}&range=#{params[:rad]}&count=100"
-    parsed_uri = URI.parse(uri_host + uri_path + uri_query)
-
-    # Net::HTTP.newでHTTPのクライアントのオブジェクトを作成
-    http = Net::HTTP.new(parsed_uri.host, parsed_uri.port)
-    #HTTPでSSL/TLSを使うかどうかを設定する。
-    http.use_ssl = true
-    request = Net::HTTP::Get.new(parsed_uri.request_uri)
-    response = http.request(request)
+    parsed_uri = URI.parse(uri_path + uri_query)
+    response = gourmet_api_request(parsed_uri)
     
+    # XMLの解析、レストラン情報の格納
     doc = REXML::Document.new(response.body)
-    
-    @restaurants = Array.new()
-
     REXML::XPath.match(doc, "/results/shop").map do |restaurant|
       restaurant_temp = Hash.new()
       restaurant_temp.store(:id, restaurant.elements["id"].text)
@@ -52,6 +41,7 @@ class ResultsController < ApplicationController
       @restaurants << restaurant_temp
     end
 
+    # ページネーション処理
     p @restaurants
     @paginatable_restaurants = Kaminari.paginate_array(@restaurants).page(params[:page]).per(10)
   end
