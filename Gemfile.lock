@@ -345,6 +345,7 @@ DEPENDENCIES
   capybara
   debug
   dotenv-rails
+  execjs
   factory_bot_rails
   faker
   importmap-rails

@@ -33,6 +33,7 @@ gem 'sassc-rails'
 gem 'jquery-rails'
 
 gem 'kaminari'
+gem 'execjs'
 
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
