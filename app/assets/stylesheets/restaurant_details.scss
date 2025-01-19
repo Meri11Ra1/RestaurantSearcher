@@ -1,0 +1,9 @@
+@import './layouts.scss';
+
+@function responsible-text-size($size) {
+  @return clamp(0.9em, $size, 2em);
+}
+
+@function responsible-large-text-size($size) {
+  @return clamp(1.2em, $size, 3em);
+}
