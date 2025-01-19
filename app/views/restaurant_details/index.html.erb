@@ -7,10 +7,12 @@
       <p class="back_button_text">検索結果に戻る</p>
     <% end %>
   </div>
+
   <div class="restaurant_details_content">
     <div class="restaurant_thumbnail_wrapper">
       <%= image_tag @restaurant[:thumbnail_url], class: "restaurant_thumbnail" %>
     </div>
+
     <div class="restaurant_info_field">
       <div class="restaurant_name_wrapper">
         <p class="restaurant_name">
@@ -18,13 +20,13 @@
         </p>
       </div>
       <div class="restaurant_open_wrapper">
-        <p class="restaurant_open">営業時間</p>
+        <p class="restaurant_open restaurant_open_index">営業時間</p>
         <p class="restaurant_open">
           <%= @restaurant[:open] %>
         </p>
       </div>
       <div class="restaurant_address_wrapper">
-        <p class="restaurant_address">住所</p>
+        <p class="restaurant_address restaurant_address_index ">住所</p>
         <p class="restaurant_address">
           <%= @restaurant[:address] %>
         </p>

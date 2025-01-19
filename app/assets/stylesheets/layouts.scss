@@ -9,10 +9,6 @@ $background-color: #F4F4F4;
 $line-gray: #CDCDCD;
 $icon-color: #A1A1A1;
 
-@function responsible-text-size($size) {
-  @return clamp(1.2em, $size, 1.5em);
-}
-
 @mixin mobile {
   @media screen and (max-width: 768px) {
     @content;

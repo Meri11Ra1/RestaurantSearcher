@@ -54,8 +54,12 @@ body {
 }
 
 .button {
-  width: 160px;
-  height: 50px;
+  width: 12vw;
+  height: 6vh;
+  @include mobile {
+    width: 130px;
+    height: 45px;
+  }
   font-size: responsible-text-size(1.7vw);
   color: #FFF;
   background-color: #605BFF;
@@ -97,6 +101,9 @@ header {
       padding: 0;
       margin: 0;
       font-size: 4vh;
+      @include mobile {
+        font-size: 5vw;
+      }
       font-family: "Nunito", serif;
       color: $text-color;
     }
