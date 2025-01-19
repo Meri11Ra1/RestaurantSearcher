@@ -56,7 +56,8 @@ RUN useradd rails --create-home --shell /bin/bash && \
 USER rails:rails
 
 # Precompiling assets for production
-RUN rails assets:precompile
+RUN bundle exec rails assets:clobber && \
+    bundle exec rails assets:precompile
 
 # Entrypoint prepares the database.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
