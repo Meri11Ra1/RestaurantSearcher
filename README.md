@@ -33,6 +33,7 @@ $ sudo apt install rbenv
 $ git clone https://github.com/rbenv/ruby-build.git "$(rbenv root)"/plugins/ruby-build 
 $ rbenv install 3.2.2 # Rubyのインストール
 $ rbenv global 3.2.2 # Ruby Version切り替え
+$ ruby -v # 3.2.2となることを確認、なっていなかったらパスの設定を変更する
 ```
 
 ### gemのインストール
