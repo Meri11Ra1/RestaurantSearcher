@@ -37,8 +37,8 @@ $ rbenv global 3.2.2 # Ruby Version切り替え
 
 ### gemのインストール
 ```bash
-$ gem install bundler
-$ gem install rails -v "7.1.5.1"
+$ sudo gem install bundler
+$ sudo gem install rails -v "7.1.5.1"
 ```
 
 ### 実行コマンド
